@@ -2,4 +2,6 @@
 
 console.log('Welcome to the Brain Games!');
 
-chmod +x bin/brain-games.js
+import { greetUser } from '../src/cli.js';
+
+greetUser();
