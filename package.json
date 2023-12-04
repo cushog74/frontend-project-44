@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/brain-games.js"
+    "start": "node bin/brain-games.js",
+    "lint": "npx eslint ."
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0"
   }
 }
