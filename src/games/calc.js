@@ -33,7 +33,6 @@ const playBrainCalc = () => {
       console.log(`Let's try again, ${name}!`);
       return;
     }
-    console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
 };
