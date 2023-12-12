@@ -34,4 +34,4 @@ const playGame = () => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export default playBrainEven;
+export default playGame;
