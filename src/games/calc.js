@@ -1,4 +1,4 @@
-import { getRandomNumber, getRandomOperator, calculate } from '../src/index.js';
+import { getRandomNumber, getRandomOperator, calculate } from '../index.js';
 
 const generateQuestion = () => {
   const number1 = getRandomNumber();
