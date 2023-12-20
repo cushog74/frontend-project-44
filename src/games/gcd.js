@@ -1,13 +1,7 @@
 const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
 const generateNumbers = () => {
   return Math.floor(Math.random() * 100) + 1;
 };
-
 const gcd = (a, b) => {
   if (b === 0) {
     return a;
@@ -22,6 +16,11 @@ const playGame = () => {
   console.log(`Find the greatest common divisor of given numbers.`);
   console.log(`Question: ${num1} ${num2}`);
 
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
   rl.question('Your answer: ', (answer) => {
     const userAnswer = parseInt(answer, 10);
     if (gcd(num1, num2) === userAnswer) {
@@ -32,5 +31,6 @@ const playGame = () => {
     rl.close();
   });
 };
-export default playGcdGame;
+module.exports = playGame;
+
 
