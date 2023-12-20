@@ -1,4 +1,4 @@
-const readline = require('readline/prompt-sync');
+const readline = require('readline');
 const { askQuestion, generateRandomNumber, gcd } = require('./index');
 
 function playGame() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-const readline = require('readline/prompt-sync');
+const readline = require('readline');
 const { playGame } = require('../src/games/gcd');
 
-playGame();
+const rl = readline.createInterface({ input: process.stdin, output: process.stdout, });
+
+playGame(rl);
