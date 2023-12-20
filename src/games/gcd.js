@@ -31,6 +31,6 @@ const playGame = () => {
     rl.close();
   });
 };
-module.exports = playGame;
+export default startGcdGame;
 
 
