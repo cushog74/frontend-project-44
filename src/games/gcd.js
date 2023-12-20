@@ -1,4 +1,4 @@
-const readline = require('readline');
+const readline = require('readline/prompt-sync');
 const generateNumbers = () => {
   return Math.floor(Math.random() * 100) + 1;
 };
@@ -15,11 +15,6 @@ const playGame = () => {
 
   console.log(`Find the greatest common divisor of given numbers.`);
   console.log(`Question: ${num1} ${num2}`);
-
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
 
   rl.question('Your answer: ', (answer) => {
     const userAnswer = parseInt(answer, 10);
