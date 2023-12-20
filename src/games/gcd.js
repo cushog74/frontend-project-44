@@ -1,31 +1,32 @@
 const readline = require('readline/prompt-sync');
-const generateNumbers = () => {
-  return Math.floor(Math.random() * 100) + 1;
-};
-const gcd = (a, b) => {
-  if (b === 0) {
-    return a;
-  }
-  return gcd(b, a % b);
-};
+const { askQuestion, generateRandomNumber, gcd } = require('./index');
 
-const playGame = () => {
-  const num1 = generateNumbers();
-  const num2 = generateNumbers();
+function playGame() {
+  const questions = 3;
+  let correctAnswers = 0;
 
-  console.log(`Find the greatest common divisor of given numbers.`);
-  console.log(`Question: ${num1} ${num2}`);
+  for (let i = 0; i < questions; i++) {
+    const num1 = generateRandomNumber(1, 100);
+    const num2 = generateRandomNumber(1, 100);
 
-  rl.question('Your answer: ', (answer) => {
-    const userAnswer = parseInt(answer, 10);
-    if (gcd(num1, num2) === userAnswer) {
+    const question = `${num1} and ${num2}`;
+    const userAnswer = parseInt(askQuestion(`Find the greatest common divisor of ${question}.`));
+    const correctAnswer = gcd(num1, num2);
+
+    if (userAnswer === correctAnswer) {
       console.log('Correct!');
+      correctAnswers++;
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${gcd(num1, num2)}'.`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was ${correctAnswer}.`);
+      console.log('Let\'s try again, Bill!');
     }
-    rl.close();
-  });
-};
-export default startGcdGame;
+  }
+
+  if (correctAnswers === questions) {
+    console.log('Congratulations, Bill!');
+  }
+}
+
+module.exports = playGame;
 
 

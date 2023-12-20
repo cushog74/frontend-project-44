@@ -1,5 +1,5 @@
 #!/usr/bin/env node
+const readline = require('readline/prompt-sync');
+const { playGame } = require('../src/games/gcd');
 
-import startGcdGame from '../src/games/gcd.js';
-
-startGcdGame();
+playGame();
