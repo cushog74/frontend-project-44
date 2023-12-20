@@ -1,29 +1,36 @@
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-import { welcome, getUserName, congratulate, tryAgain } from '../src/cli.js';
-import { gcd, isAnswerCorrect, getRandomNumber } from '../src/index.js';
-const playGcdGame = () => {
-  welcome();
-  const name = getUserName();
-  console.log(`Hello, ${name}!`);
-  console.log('Find the greatest common divisor of given numbers.');
-  const roundsCount = 3;
-  let correctAnswersCount = 0;
-  while (correctAnswersCount < roundsCount) {
-    const number1 = getRandomNumber(1, 100);
-    const number2 = getRandomNumber(1, 100);
-    const question = `${number1} ${number2}`;
-    const correctAnswer = gcd(number1, number2);
-    console.log(`Question: ${question}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    if (isAnswerCorrect(userAnswer, correctAnswer)) {
-      console.log('Correct!');
-      correctAnswersCount += 1;
-    } else {
-      tryAgain(userAnswer, correctAnswer, name);
-      return;
-    }
+const generateNumbers = () => {
+  return Math.floor(Math.random() * 100) + 1;
+};
+
+const gcd = (a, b) => {
+  if (b === 0) {
+    return a;
   }
-  congratulate(name);
+  return gcd(b, a % b);
+};
+
+const playGame = () => {
+  const num1 = generateNumbers();
+  const num2 = generateNumbers();
+
+  console.log(`Find the greatest common divisor of given numbers.`);
+  console.log(`Question: ${num1} ${num2}`);
+
+  rl.question('Your answer: ', (answer) => {
+    const userAnswer = parseInt(answer, 10);
+    if (gcd(num1, num2) === userAnswer) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${gcd(num1, num2)}'.`);
+    }
+    rl.close();
+  });
 };
 export default playGcdGame;
 
